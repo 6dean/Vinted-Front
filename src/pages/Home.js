@@ -42,15 +42,12 @@ const Home = () => {
               {elem.owner !== undefined ? (
                 <div className="sell-card">
                   <div className="user-id">
-                    {elem.owner !== undefined &&
-                    elem.owner.account !== undefined &&
-                    elem.owner.account.avatar !== undefined ? (
-                      <img
-                        className="avatar"
-                        src={elem.owner.account.avatar.secure_url}
-                        alt=""
-                      />
-                    ) : null}
+                    <img
+                      className="avatar"
+                      src={elem.owner.avatar.secure_url}
+                      alt=""
+                    />
+
                     {elem.owner === undefined
                       ? "Team Reacteur"
                       : elem.owner.account.username}
@@ -71,10 +68,10 @@ const Home = () => {
 
                   <div className="product-price">{elem.product_price} €</div>
                   <div className="product-info">
-                    {elem.product_details[1]["TAILLE"]}
+                    {elem.product_details[1].size}
                   </div>
                   <div className="product-info">
-                    {elem.product_details[0]["MARQUE"]}
+                    {elem.product_details[0].brand}
                   </div>
                 </div>
               ) : null}

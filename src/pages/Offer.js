@@ -9,17 +9,15 @@ const Offer = () => {
 
   const fetchData = async () => {
     const response = await axios.get(
-      `https://site--backend-vinted--6qn7tv96v7tt.code.run/${id}`
+      `https://site--backend-vinted--6qn7tv96v7tt.code.run/offer/${id}`
     );
     setData(response.data);
     setIsLoading(false);
-
-    console.log(response.data);
   };
 
   useEffect(() => {
     fetchData();
-  });
+  }, [id]);
 
   return isLoading ? (
     <span>En cours de chargement... </span>
@@ -29,11 +27,7 @@ const Offer = () => {
         <div className="img-element">
           <img
             className="img-offer"
-            src={
-              data.product_image.secure_url
-                ? data.product_image.secure_url
-                : null
-            }
+            src={data.product_image["secure_url"]}
             alt=""
           />
         </div>
@@ -66,16 +60,13 @@ const Offer = () => {
           <div className="product-name">{data.product_name} </div>
           <div className="product-description">{data.product_description} </div>
           <div className="user-id-offer">
-            {data.owner !== undefined &&
-            data.owner.account !== undefined &&
-            data.owner.account.avatar !== undefined ? (
-              <img
-                className="avatar-profil"
-                src={data.owner.account.avatar.secure_url}
-                alt=""
-              />
-            ) : null}
-            {data.owner === undefined ? null : data.owner}
+            <img
+              className="avatar-profil"
+              src={data.owner.avatar.secure_url}
+              alt=""
+            />
+
+            {data.owner === undefined ? null : data.owner["account"].username}
           </div>
           <div className="buy-button">
             <button>ACHETER</button>
