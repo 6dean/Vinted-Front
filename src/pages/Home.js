@@ -11,6 +11,7 @@ const Home = () => {
       "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers"
     );
     setData(response.data);
+
     setIsLoading(false);
   };
 

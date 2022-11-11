@@ -404,3 +404,11 @@ h1 {
 .logging-button {
   margin-top: 30px;
 }
+
+.upload-button {
+  margin-left: auto;
+  margin-right: auto;
+  height: 20px;
+  width: 190px;
+  font-size: 10px;
+}

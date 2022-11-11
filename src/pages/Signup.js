@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const Signup = () => {
+const Signup = ({ fileUploaded }) => {
   // MES USESTATE
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState();
   const [newsletter, setNewsletter] = useState(false);
   const [infos, setInfos] = useState(false);
 
@@ -54,6 +55,16 @@ const Signup = () => {
                 value={password}
               />
             </div>
+            Uploader un avatar
+            <input
+              className="upload-button"
+              type="file"
+              onChange={(avatar) => setAvatar(avatar.target.value)}
+              value={avatar}
+              id="avatar"
+              name="avatar"
+              accept="image/png, image/jpeg"
+            ></input>
             <div>
               <div className="flexbox-letter">
                 <div>
@@ -65,7 +76,7 @@ const Signup = () => {
                       setNewsletter((current) => !current);
                     }}
                   ></input>
-                </div>{" "}
+                </div>
                 <div>
                   <span className="span-letter">
                     Je souhaite recevoir par e-mail des offres personnalisées et
@@ -73,11 +84,14 @@ const Signup = () => {
                   </span>
                 </div>{" "}
               </div>
+              <></>
+              {}
             </div>
             <div>
               <button
                 className="button-join"
                 onClick={() => {
+                  console.log(avatar);
                   if (username === "" || email === "") {
                     alert(`Your informations are not complete`);
                   } else {
@@ -86,12 +100,13 @@ const Signup = () => {
                     const data = async () => {
                       try {
                         const response = await axios.post(
-                          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+                          "https://site--backend-vinted--6qn7tv96v7tt.code.run/user/signup",
                           {
                             email: email,
                             username: username,
                             password: password,
                             newsletter: newsletter,
+                            avatar: avatar,
                           }
                         );
                         const token = response.data.token;
