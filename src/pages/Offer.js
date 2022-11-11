@@ -9,7 +9,7 @@ const Offer = () => {
 
   const fetchData = async () => {
     const response = await axios.get(
-      `https://site--backend-vinted--6qn7tv96v7tt.code.run/offer/${id}`
+      `https://site--backend-vinted--6qn7tv96v7tt.code.run/${id}`
     );
     setData(response.data);
     setIsLoading(false);
