@@ -479,11 +479,14 @@ h1 {
 }
 
 .advertise-banner {
-  cursor: pointer;
   display: flex;
   justify-content: center;
   padding: 20px;
   margin-bottom: 15px;
+}
+
+.advertise-banner img {
+  cursor: pointer;
 }
 
 .offers-list {

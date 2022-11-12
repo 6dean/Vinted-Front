@@ -10,11 +10,12 @@ const Offerslist = () => {
   );
   const [mini, setMini] = useState("");
   const [maxi, setMaxi] = useState("");
-  const [color, setColor] = useState("");
-  const [brand, setBrand] = useState("");
+  const [product, setProduct] = useState("");
 
   const fetchData = async () => {
-    const response = await axios.get(`${url}?title=${brand}${color}`);
+    const response = await axios.get(
+      `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?${url}&title=${product}&priceMin=${mini}&priceMax=${maxi}`
+    );
     setData(response.data);
     setIsLoading(false);
   };
@@ -30,19 +31,19 @@ const Offerslist = () => {
   ) : (
     <>
       <div className="advertise-banner">
-        <img
-          src="https://res.cloudinary.com/dlfp2xvis/image/upload/v1668287505/my-content/advertise_lereacteurv01_cmzths.png"
-          alt="lereacteur-advertise"
-        />
+        <a href="https://www.lereacteur.io/">
+          <img
+            src="https://res.cloudinary.com/dlfp2xvis/image/upload/v1668287505/my-content/advertise_lereacteurv01_cmzths.png"
+            alt="lereacteur-advertise"
+          />
+        </a>
       </div>
 
       <div className="nav-bar-offers">
         <button
           className="button-offer"
           onClick={() => {
-            setUrl(
-              "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?sort=price-asc"
-            );
+            setUrl("sort=price-asc");
           }}
         >
           Prix ↑
@@ -50,9 +51,7 @@ const Offerslist = () => {
         <button
           className="button-offer"
           onClick={() => {
-            setUrl(
-              "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?sort=price-desc"
-            );
+            setUrl("sort=price-desc");
           }}
         >
           Prix ↓
@@ -74,16 +73,9 @@ const Offerslist = () => {
         <input
           className="input-offer"
           type="text"
-          placeholder="Couleur"
-          onChange={(elem) => setColor(elem.target.value)}
-          value={color}
-        ></input>
-        <input
-          className="input-offer"
-          type="text"
-          placeholder="Marque"
-          onChange={(elem) => setBrand(elem.target.value)}
-          value={brand}
+          placeholder="Article"
+          onChange={(elem) => setProduct(elem.target.value)}
+          value={product}
         ></input>
       </div>
       <div className="introduction">
