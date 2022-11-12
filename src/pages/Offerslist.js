@@ -5,19 +5,23 @@ import { Link } from "react-router-dom";
 const Offerslist = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [value, setvalue] = useState("");
+  const [url, setUrl] = useState(
+    "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers"
+  );
+  const [mini, setMini] = useState("");
+  const [maxi, setMaxi] = useState("");
+  const [color, setColor] = useState("");
+  const [brand, setBrand] = useState("");
 
   const fetchData = async () => {
-    const response = await axios.get(
-      `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers${value}`
-    );
+    const response = await axios.get(`${url}`);
     setData(response.data);
     setIsLoading(false);
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   return isLoading ? (
     <div className="loading">
@@ -25,29 +29,62 @@ const Offerslist = () => {
     </div>
   ) : (
     <>
+      <div className="advertise-banner">
+        <img
+          src="https://res.cloudinary.com/dlfp2xvis/image/upload/v1668287505/my-content/advertise_lereacteurv01_cmzths.png"
+          alt="lereacteur-advertise"
+        />
+      </div>
+
       <div className="nav-bar-offers">
-        <button className="button-offer" onClick={() => {}}>
+        <button
+          className="button-offer"
+          onClick={() => {
+            setUrl(
+              "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?sort=price-asc"
+            );
+          }}
+        >
           Prix ↑
         </button>
-        <button className="button-offer" onClick={() => {}}>
+        <button
+          className="button-offer"
+          onClick={() => {
+            setUrl(
+              "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?sort=price-desc"
+            );
+          }}
+        >
           Prix ↓
         </button>
         <input
           className="input-offer"
           type="text"
           placeholder="Prix mini"
+          onChange={(elem) => setMini(elem.target.value)}
+          value={mini}
         ></input>
         <input
           className="input-offer"
           type="text"
           placeholder="Prix maxi"
+          onChange={(elem) => setMaxi(elem.target.value)}
+          value={maxi}
         ></input>
         <input
           className="input-offer"
           type="text"
           placeholder="Couleur"
+          onChange={(elem) => setColor(elem.target.value)}
+          value={color}
         ></input>
-        <input className="input-offer" type="text" placeholder="Marque"></input>
+        <input
+          className="input-offer"
+          type="text"
+          placeholder="Marque"
+          onChange={(elem) => setBrand(elem.target.value)}
+          value={brand}
+        ></input>
       </div>
       <div className="introduction">
         {data.map((elem, index) => {
