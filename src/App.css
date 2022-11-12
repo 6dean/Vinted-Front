@@ -466,6 +466,12 @@ h1 {
 .input-offer {
   border: 1px solid rgb(198, 198, 198);
   border-radius: 4px;
+  outline: none;
+}
+
+.input-offer::-webkit-input-placeholder {
+  padding: 2px;
+  opacity: 0.3;
 }
 
 .offers-list {
