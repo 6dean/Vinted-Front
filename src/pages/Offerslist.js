@@ -14,7 +14,7 @@ const Offerslist = () => {
   const [brand, setBrand] = useState("");
 
   const fetchData = async () => {
-    const response = await axios.get(`${url}`);
+    const response = await axios.get(`${url}?title=${brand}${color}`);
     setData(response.data);
     setIsLoading(false);
   };
