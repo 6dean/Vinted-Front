@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 const Offerslist = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [value, setvalue] = useState("");
 
   const fetchData = async () => {
     const response = await axios.get(
-      "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers"
+      `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers${value}`
     );
     setData(response.data);
     setIsLoading(false);
@@ -25,8 +26,28 @@ const Offerslist = () => {
   ) : (
     <>
       <div className="nav-bar-offers">
-        <button onClick={() => {}}>Moins cher en premier</button>
-        <button onClick={() => {}}>Plus cher en premier</button>
+        <button className="button-offer" onClick={() => {}}>
+          Prix ↑
+        </button>
+        <button className="button-offer" onClick={() => {}}>
+          Prix ↓
+        </button>
+        <input
+          className="input-offer"
+          type="text"
+          placeholder="Prix mini"
+        ></input>
+        <input
+          className="input-offer"
+          type="text"
+          placeholder="Prix maxi"
+        ></input>
+        <input
+          className="input-offer"
+          type="text"
+          placeholder="Couleur"
+        ></input>
+        <input className="input-offer" type="text" placeholder="Marque"></input>
       </div>
       <div className="introduction">
         {data.map((elem, index) => {

@@ -444,9 +444,28 @@ h1 {
 }
 
 .nav-bar-offers {
-  display: flex;
-  gap: 20px;
   padding: 10px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40px;
+  max-width: 1200px;
+  gap: 20px;
+}
+
+.button-offer {
+  background-color: rgb(255, 255, 255);
+  height: 40px;
+  width: 80px;
+  color: black;
+  border: 1px solid rgb(198, 198, 198);
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+.input-offer {
+  border: 1px solid rgb(198, 198, 198);
+  border-radius: 4px;
 }
 
 .offers-list {
