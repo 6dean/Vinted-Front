@@ -20,7 +20,9 @@ const Offer = () => {
   });
 
   return isLoading ? (
-    <span>En cours de chargement... </span>
+    <div className="loading">
+      <p className="loading-text">LOADING ...</p>
+    </div>
   ) : (
     <div className="master">
       <div className="offer-presentation">
