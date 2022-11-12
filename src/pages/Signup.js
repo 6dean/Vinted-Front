@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const Signup = ({ fileUploaded }) => {
+const Signup = () => {
   // MES USESTATE
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -59,7 +59,7 @@ const Signup = ({ fileUploaded }) => {
             <input
               className="upload-button"
               type="file"
-              onChange={(avatar) => setAvatar(avatar.target.value)}
+              onChange={(avatar) => setAvatar(avatar.target.files)}
               value={avatar}
               id="avatar"
               name="avatar"
@@ -102,8 +102,8 @@ const Signup = ({ fileUploaded }) => {
                         const response = await axios.post(
                           "https://site--backend-vinted--6qn7tv96v7tt.code.run/user/signup",
                           {
-                            email: email,
                             username: username,
+                            email: email,
                             password: password,
                             newsletter: newsletter,
                             avatar: avatar,

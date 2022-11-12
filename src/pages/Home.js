@@ -37,9 +37,9 @@ const Home = () => {
       </div>
 
       <div className="introduction">
-        {data.map((elem) => {
+        {data.map((elem, index) => {
           return (
-            <div>
+            <div key={index}>
               {elem.owner !== undefined ? (
                 <div className="sell-card">
                   <div className="user-id">

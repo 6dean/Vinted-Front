@@ -17,7 +17,7 @@ const Offer = () => {
 
   useEffect(() => {
     fetchData();
-  }, [id]);
+  });
 
   return isLoading ? (
     <span>En cours de chargement... </span>
