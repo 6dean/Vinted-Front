@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const Home = () => {
+const Offerslist = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,26 +23,8 @@ const Home = () => {
     <span>En cours de chargement... </span>
   ) : (
     <>
-      <div className="box-advertise">
-        <div className="style-advertise">
-          Prêts à faire du tri dans vos placards ?
-        </div>
-        <button className="advertise-button">Vends maintenant</button>
-      </div>
-      <div className="img-advertise">
-        <img
-          src="https://static.vinted.com/assets/seller-promotion/gender_test/a/banner-wide-7403f719caac875cfeea61593da7fc7e7320c126193b4ff654e4397f54d430ae.jpg"
-          alt=""
-        />
-      </div>
-      <div className="offers-list">
-        <div className="populaire">ARTICLES POPULAIRE</div>
-        <Link to="/Offers">
-          <div className="see-all">Voir tout</div>
-        </Link>
-      </div>
       <div className="introduction">
-        {data.slice(0, 10).map((elem, index) => {
+        {data.map((elem, index) => {
           return (
             <div key={index}>
               {elem.owner !== undefined ? (
@@ -89,4 +71,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Offerslist;
