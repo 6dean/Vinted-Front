@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Offerslist = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [url, setUrl] = useState(
+  const [pricing, setPricing] = useState(
     "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers"
   );
   const [mini, setMini] = useState("");
@@ -13,16 +13,22 @@ const Offerslist = () => {
   const [product, setProduct] = useState("");
 
   const fetchData = async () => {
-    const response = await axios.get(
-      `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?${url}&title=${product}&priceMin=${mini}&priceMax=${maxi}`
-    );
-    setData(response.data);
-    setIsLoading(false);
+    try {
+      const response = await axios.get(
+        `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?${pricing}&priceMin=${mini}&title=${product}&priceMax=${maxi}`
+      );
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   useEffect(() => {
     fetchData();
   });
+
+  // SUPPRESSION DE [] DANS USEEFFECT - PROVOQUE REQUETES INFINI
 
   return isLoading ? (
     <div className="loading">
@@ -43,7 +49,7 @@ const Offerslist = () => {
         <button
           className="button-offer"
           onClick={() => {
-            setUrl("sort=price-asc");
+            setPricing("sort=price-asc");
           }}
         >
           Prix ↑
@@ -51,7 +57,7 @@ const Offerslist = () => {
         <button
           className="button-offer"
           onClick={() => {
-            setUrl("sort=price-desc");
+            setPricing("sort=price-desc");
           }}
         >
           Prix ↓
