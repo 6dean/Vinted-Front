@@ -14,7 +14,6 @@ const Signup = () => {
   const [newsletter, setNewsletter] = useState(false);
   const [infos, setInfos] = useState(false);
 
-  // MES VARIABLES
   const navigate = useNavigate();
 
   return (
@@ -87,21 +86,17 @@ const Signup = () => {
                     Je souhaite recevoir par e-mail des offres personnalisées et
                     les dernières mises à jour de Vinted
                   </span>
-                </div>{" "}
+                </div>
               </div>
-              <></>
-              {}
             </div>
             <div>
               <button
                 className="button-join"
+                type="submit"
                 onClick={() => {
-                  console.log(avatar);
                   if (username === "" || email === "") {
                     alert(`Vos informations ne sont pas complètes`);
                   } else {
-                    setInfos(true);
-
                     const data = async () => {
                       try {
                         const response = await axios.post(
@@ -116,19 +111,10 @@ const Signup = () => {
                         );
                         const token = response.data.token;
                         Cookies.set("token", token, { expires: 1 });
-                        navigate("/");
+                        token ? setInfos(true) : <p>une erreur est survenue</p>;
+                        setInfos(true) && navigate("/");
                       } catch (error) {
-                        console.log();
-                        <div>
-                          {error.message !== undefined ? (
-                            <p>Une erreur est survenue :S</p>
-                          ) : (
-                            <p></p>
-                          )}
-                        </div>;
                         console.log(error.message);
-
-                        <div>Une erreur est survenue :S</div>;
                       }
                     };
                     data();
