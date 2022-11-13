@@ -10,7 +10,7 @@ const Signup = () => {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState("");
   const [newsletter, setNewsletter] = useState(false);
   const [infos, setInfos] = useState(false);
 
@@ -20,7 +20,7 @@ const Signup = () => {
   return (
     <div className="formulaire">
       <div className="App">
-        <h1>Rejoins-nous !</h1>
+        <div>{infos ? <h1>Merci !</h1> : <h1>Inscris-toi !</h1>}</div>
         {infos === false ? (
           <div className="input-block">
             <div>
@@ -55,16 +55,21 @@ const Signup = () => {
                 value={password}
               />
             </div>
-            Uploader un avatar
-            <input
-              className="upload-button"
-              type="file"
-              onChange={(avatar) => setAvatar(avatar.target.files)}
-              value={avatar}
-              id="avatar"
-              name="avatar"
-              accept="image/png, image/jpeg"
-            ></input>
+            <div className="upload-avatar">
+              <p className="input-text">Avatar</p>{" "}
+              <div>
+                <input
+                  className="upload-button"
+                  type="file"
+                  onChange={(event) => setAvatar(event.target.value)}
+                  value={avatar}
+                  id="avatar"
+                  name="avatar"
+                  accept="image/png, image/jpeg"
+                ></input>
+              </div>
+            </div>
+
             <div>
               <div className="flexbox-letter">
                 <div>
@@ -93,7 +98,7 @@ const Signup = () => {
                 onClick={() => {
                   console.log(avatar);
                   if (username === "" || email === "") {
-                    alert(`Your informations are not complete`);
+                    alert(`Vos informations ne sont pas complètes`);
                   } else {
                     setInfos(true);
 
@@ -113,7 +118,17 @@ const Signup = () => {
                         Cookies.set("token", token, { expires: 1 });
                         navigate("/");
                       } catch (error) {
-                        console.log(error);
+                        console.log();
+                        <div>
+                          {error.message !== undefined ? (
+                            <p>Une erreur est survenue :S</p>
+                          ) : (
+                            <p></p>
+                          )}
+                        </div>;
+                        console.log(error.message);
+
+                        <div>Une erreur est survenue :S</div>;
                       }
                     };
                     data();

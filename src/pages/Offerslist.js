@@ -15,7 +15,7 @@ const Offerslist = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?${pricing}&priceMin=${mini}&title=${product}&priceMax=${maxi}`
+        `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?${pricing}&title=${product}&priceMin=${mini}&priceMax=${maxi}`
       );
       setData(response.data);
       setIsLoading(false);
@@ -26,7 +26,8 @@ const Offerslist = () => {
 
   useEffect(() => {
     fetchData();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pricing, mini, maxi, product]);
 
   // SUPPRESSION DE [] DANS USEEFFECT - PROVOQUE REQUETES INFINI
 

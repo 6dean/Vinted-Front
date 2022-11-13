@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Offer = () => {
   const { id } = useParams();
@@ -25,6 +25,12 @@ const Offer = () => {
     </div>
   ) : (
     <div className="master">
+      <div className="offers-list-2">
+        <div className="populaire"></div>
+        <Link to="/Offers">
+          <div className="see-all-2"> ← Retour</div>
+        </Link>
+      </div>
       <div className="offer-presentation">
         <div className="img-element">
           <img
