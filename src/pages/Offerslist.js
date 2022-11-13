@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 const Offerslist = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [pricing, setPricing] = useState(
-    "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers"
-  );
+  const [pricing, setPricing] = useState("");
   const [mini, setMini] = useState("");
   const [maxi, setMaxi] = useState("");
   const [product, setProduct] = useState("");
@@ -28,8 +26,6 @@ const Offerslist = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pricing, mini, maxi, product]);
-
-  // SUPPRESSION DE [] DANS USEEFFECT - PROVOQUE REQUETES INFINI
 
   return isLoading ? (
     <div className="loading">
