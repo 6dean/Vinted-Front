@@ -169,7 +169,7 @@ const Publish = ({ token }) => {
                             }
                           );
                           console.log(response.data);
-                          navigate("/");
+                          navigate("/Offers");
                         } catch (error) {
                           console.log(error.message);
                         }
