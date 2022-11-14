@@ -20,6 +20,7 @@ import Footer from "./components/Footer";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
+  const [product, setProduct] = useState("");
 
   const transferToken = (token) => {
     if (token) {
@@ -33,13 +34,21 @@ function App() {
 
   return (
     <Router>
-      <Header token={token} transferToken={transferToken} />
+      <Header
+        token={token}
+        transferToken={transferToken}
+        product={product}
+        setProduct={setProduct}
+      />
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home product={product} />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/Offers" element={<Offerslist />} />
+        <Route
+          path="/Offers"
+          element={<Offerslist product={product} setProduct={setProduct} />}
+        />
         <Route
           path="/login"
           element={<Login transferToken={transferToken} />}

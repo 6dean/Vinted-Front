@@ -91,8 +91,8 @@ const Signup = () => {
             <div>
               <button
                 className="button-join"
-                type="submit"
                 onClick={() => {
+                  console.log(avatar);
                   if (username === "" || email === "") {
                     alert(`Vos informations ne sont pas complètes`);
                   } else {

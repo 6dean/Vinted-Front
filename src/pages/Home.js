@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Home = () => {
+const Home = ({ product }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -17,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [product]);
 
   return isLoading ? (
     <div className="loading">

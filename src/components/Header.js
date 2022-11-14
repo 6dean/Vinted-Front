@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Header = ({ token, transferToken }) => {
+const Header = ({ token, transferToken, product, setProduct }) => {
   return (
     <>
       <header>
@@ -17,6 +17,10 @@ const Header = ({ token, transferToken }) => {
           type="search"
           placeholder="Rechercher des articles"
           name="Vinted"
+          onChange={(event) => {
+            setProduct(event.target.value);
+          }}
+          value={product}
         />
         <div className="header-style">
           {token === null ? (
