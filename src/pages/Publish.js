@@ -16,20 +16,22 @@ const Publish = ({ token }) => {
 
   if (token) {
     return (
-      <div className="master">
+      <div className="master-2">
         <div className="publish-style">
-          Vends ton article
+          <h2>Vends ton article</h2>
           <div>
-            <div className="block-publish">
-              <input
-                className="upload-button"
-                type="file"
-                onChange={(event) => setImage(event.target.files[0])}
-                files={image}
-                id="avatar"
-                name="avatar"
-                accept="image/png, image/jpeg"
-              ></input>
+            <div className="block-publish-2">
+              <div>
+                <input
+                  className="upload-offer-button"
+                  type="file"
+                  onChange={(event) => setImage(event.target.files[0])}
+                  files={image}
+                  id="avatar"
+                  name="avatar"
+                  accept="image/png, image/jpeg"
+                ></input>
+              </div>
             </div>
             <div className="block-publish">
               <div className="settings-offer">
@@ -93,7 +95,7 @@ const Publish = ({ token }) => {
               </div>
               <div>
                 <div className="settings-offer">
-                  <div>Etat</div>
+                  <div>Qualité</div>
                   <input
                     className="input-offer-2"
                     onChange={(quality) => setQuality(quality.target.value)}
@@ -104,7 +106,7 @@ const Publish = ({ token }) => {
                   ></input>
                 </div>
                 <div className="settings-offer">
-                  <div>Lieu</div>
+                  <div>Ville</div>
                   <input
                     className="input-offer-2"
                     onChange={(city) => setCity(city.target.value)}
@@ -118,7 +120,7 @@ const Publish = ({ token }) => {
             </div>
             <div className="block-publish">
               <div className="settings-offer">
-                <div>prix</div>
+                <div>Prix</div>
                 <input
                   className="input-offer-2"
                   onChange={(price) => setPrice(price.target.value)}
@@ -128,9 +130,12 @@ const Publish = ({ token }) => {
                   value={price}
                 ></input>
               </div>
-              <div className="settings-offer">
-                <div></div>
-                <div>echange</div>
+              <div className="settings-offer-2">
+                <div className="invisible"> </div>
+                <div>
+                  <input className="checkmark" type="checkbox"></input> Je suis
+                  intéréssé(e) par les échanges
+                </div>
               </div>
             </div>
             <div className="button-add-offer">
