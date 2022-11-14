@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Header = ({ token, transferToken, product, setProduct }) => {
   return (
-    <>
+    <div className="sticky-header">
       <header>
         <div>
           <Link to="/">
@@ -43,7 +43,7 @@ const Header = ({ token, transferToken, product, setProduct }) => {
         </div>
       </header>{" "}
       <div className="line"></div>
-    </>
+    </div>
   );
 };
 

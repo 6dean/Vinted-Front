@@ -598,7 +598,7 @@ footer > .footer-flex .nav-bar .button-nav-bar:hover {
 }
 
 .master-2 {
-  height: 130vh;
+  min-height: 130vh;
   background: rgb(208, 208, 208);
   background: linear-gradient(
     180deg,

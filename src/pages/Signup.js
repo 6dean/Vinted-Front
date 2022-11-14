@@ -18,7 +18,7 @@ const Signup = () => {
   return (
     <div className="formulaire">
       <div className="App">
-        <div>{infos ? <h1>Merci !</h1> : <h1>Inscris-toi !</h1>}</div>
+        <div>{infos ? <h1>Merci !</h1> : <h1>Rejoins-nous !</h1>}</div>
         {infos === false ? (
           <div className="input-block">
             <div>
