@@ -33,11 +33,11 @@ const Offerslist = ({ product, setProduct }) => {
     </div>
   ) : (
     <>
-      <div className="advertise-banner">
+      <div className="banner-banner">
         <a href="https://www.lereacteur.io/">
           <img
             src="https://res.cloudinary.com/dlfp2xvis/image/upload/v1668287505/my-content/advertise_lereacteurv01_cmzths.png"
-            alt="lereacteur-advertise"
+            alt="lereacteur-banner"
           />
         </a>
       </div>
@@ -90,9 +90,16 @@ const Offerslist = ({ product, setProduct }) => {
                   <div className="user-id">
                     <img
                       className="avatar"
-                      src={elem.owner.avatar.secure_url}
+                      src={
+                        elem.owner.avatar
+                          ? elem.owner.avatar.secure_url
+                          : "https://res.cloudinary.com/dlfp2xvis/image/upload/v1668451320/my-content/photo-avatar-profil_tkttgw.png"
+                      }
                       alt=""
                     />
+                    {elem.owner === undefined
+                      ? "Team Reacteur"
+                      : elem.owner.account.username}
                   </div>
 
                   <Link to={`/offer/${elem._id}`}>

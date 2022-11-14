@@ -38,6 +38,7 @@ const Offer = () => {
             src={data.product_image["secure_url"]}
             alt=""
           />
+          <div></div>
         </div>
         <div className="box-details">
           {" "}
@@ -70,7 +71,11 @@ const Offer = () => {
           <div className="user-id-offer">
             <img
               className="avatar-profil"
-              src={data.owner.avatar.secure_url}
+              src={
+                data.owner.avatar
+                  ? data.owner.avatar.secure_url
+                  : "https://res.cloudinary.com/dlfp2xvis/image/upload/v1668451320/my-content/photo-avatar-profil_tkttgw.png"
+              }
               alt=""
             />
 

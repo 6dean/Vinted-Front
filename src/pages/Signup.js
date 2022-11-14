@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -12,8 +13,11 @@ const Signup = () => {
   const [avatar, setAvatar] = useState("");
   const [newsletter, setNewsletter] = useState(false);
   const [infos, setInfos] = useState(false);
-
   const navigate = useNavigate();
+
+  const reDirection = () => {
+    navigate("/");
+  };
 
   return (
     <div className="formulaire">
@@ -111,15 +115,13 @@ const Signup = () => {
                         const token = response.data.token;
                         Cookies.set("token", token, { expires: 1 });
                         token ? setInfos(true) : <p>une erreur est survenue</p>;
-                        setInfos(true);
-                        navigate("/");
                       } catch (error) {
                         console.log(error.message);
                       }
                     };
                     data();
-                    setTimeout(() => navigate("/"), "2000");
                   }
+                  setTimeout(() => reDirection, "2000");
                 }}
               >
                 Créer un compte
