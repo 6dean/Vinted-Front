@@ -12,6 +12,7 @@ import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Offerslist from "./pages/Offerslist";
+import Publish from "./pages/Publish";
 
 // MES COMPONENTS
 import Header from "./components/Header";
@@ -48,6 +49,10 @@ function App() {
         <Route
           path="/Offers"
           element={<Offerslist product={product} setProduct={setProduct} />}
+        />
+        <Route
+          path="/publish"
+          element={token ? <Publish token={token} /> : <Signup />}
         />
         <Route
           path="/login"

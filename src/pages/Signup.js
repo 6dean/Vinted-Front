@@ -59,8 +59,8 @@ const Signup = () => {
                 <input
                   className="upload-button"
                   type="file"
-                  onChange={(event) => setAvatar(event.target.value)}
-                  value={avatar}
+                  onChange={(event) => setAvatar(event.target.files[0])}
+                  files={avatar}
                   id="avatar"
                   name="avatar"
                   accept="image/png, image/jpeg"
@@ -92,31 +92,33 @@ const Signup = () => {
               <button
                 className="button-join"
                 onClick={() => {
-                  console.log(avatar);
                   if (username === "" || email === "") {
                     alert(`Vos informations ne sont pas complètes`);
                   } else {
                     const data = async () => {
+                      const formdata = new FormData();
+                      formdata.append("username", username);
+                      formdata.append("email", email);
+                      formdata.append("password", password);
+                      formdata.append("newsletter", newsletter);
+                      formdata.append("avatar", avatar);
+
                       try {
                         const response = await axios.post(
                           "https://site--backend-vinted--6qn7tv96v7tt.code.run/user/signup",
-                          {
-                            username: username,
-                            email: email,
-                            password: password,
-                            newsletter: newsletter,
-                            avatar: avatar,
-                          }
+                          formdata
                         );
                         const token = response.data.token;
                         Cookies.set("token", token, { expires: 1 });
                         token ? setInfos(true) : <p>une erreur est survenue</p>;
-                        setInfos(true) && navigate("/");
+                        setInfos(true);
+                        navigate("/");
                       } catch (error) {
                         console.log(error.message);
                       }
                     };
                     data();
+                    setTimeout(() => navigate("/"), "2000");
                   }
                 }}
               >

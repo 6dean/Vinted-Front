@@ -32,14 +32,14 @@ const Header = ({ token, transferToken, product, setProduct }) => {
               className="button"
               onClick={() => {
                 transferToken(null);
-                console.log("hello");
               }}
             >
               deconnecter
             </div>
           )}
-
-          <div className="button-sell">Vendre tes articles</div>
+          <Link to="/Publish">
+            <div className="button-sell">Vendre tes articles</div>
+          </Link>
         </div>
       </header>{" "}
       <div className="line"></div>

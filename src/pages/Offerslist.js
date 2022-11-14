@@ -9,11 +9,12 @@ const Offerslist = () => {
   const [mini, setMini] = useState("");
   const [maxi, setMaxi] = useState("");
   const [product, setProduct] = useState("");
+  const [page, setPage] = useState(1);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?${pricing}&title=${product}&priceMin=${mini}&priceMax=${maxi}`
+        `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers?${pricing}&title=${product}&priceMin=${mini}&priceMax=${maxi}&page=${page}`
       );
       setData(response.data);
       setIsLoading(false);
@@ -25,7 +26,7 @@ const Offerslist = () => {
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pricing, mini, maxi, product]);
+  }, [pricing, mini, maxi, product, page]);
 
   return isLoading ? (
     <div className="loading">
@@ -120,6 +121,30 @@ const Offerslist = () => {
             </div>
           );
         })}
+      </div>
+      <div className="page-selector">
+        <div>
+          {page === 1 ? null : (
+            <button
+              onClick={() => {
+                setPage(page - 1);
+              }}
+            >
+              Page précédente
+            </button>
+          )}
+        </div>
+        <div>
+          {page === 2 ? null : (
+            <button
+              onClick={() => {
+                setPage(page + 1);
+              }}
+            >
+              Page Suivante
+            </button>
+          )}
+        </div>
       </div>
     </>
   );

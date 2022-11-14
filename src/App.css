@@ -557,3 +557,75 @@ footer > .footer-flex .nav-bar .button-nav-bar:hover {
   background-color: white;
   text-decoration: underline;
 }
+
+.publish-style {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.settings-offer {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px;
+}
+
+.block-publish {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.block-upload {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+  padding: 50px;
+  cursor: pointer;
+}
+
+.button-add-offer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input-offer-2 {
+  border: solid 1px rgb(211, 211, 211);
+  border-radius: 6px;
+  height: 40px;
+  width: 500px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding-left: 8px;
+  outline-color: #007782;
+}
+
+.input-offer-descript {
+  border: solid 1px rgb(211, 211, 211);
+  border-radius: 6px;
+  padding-bottom: 100px;
+  width: 500px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding-left: 8px;
+  outline-color: #007782;
+}
+
+.page-selector {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.page-selector > div > button {
+  font-size: 10px;
+  width: 120px;
+  height: 30px;
+}
+
+.input-offer-descript::-webkit-input-placeholder {
+  padding: 2px;
+  opacity: 0.3;
+}
