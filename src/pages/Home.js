@@ -8,7 +8,7 @@ const Home = ({ product }) => {
 
   const fetchData = async () => {
     const response = await axios.get(
-      "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers"
+      `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers/?title=${product}`
     );
     setData(response.data);
 
@@ -17,6 +17,7 @@ const Home = ({ product }) => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product]);
 
   return isLoading ? (

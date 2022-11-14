@@ -57,6 +57,13 @@ header {
   background-color: rgba(235, 235, 235, 0.528);
   border: none;
   border-radius: 4px;
+  outline: none;
+  padding-left: 5px;
+}
+
+.search-bar::-webkit-input-placeholder {
+  padding: 2px;
+  opacity: 0.3;
 }
 
 .button {

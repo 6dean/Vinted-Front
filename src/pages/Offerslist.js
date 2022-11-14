@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Offerslist = () => {
+const Offerslist = ({ product, setProduct }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [pricing, setPricing] = useState("");
   const [mini, setMini] = useState("");
   const [maxi, setMaxi] = useState("");
-  const [product, setProduct] = useState("");
   const [page, setPage] = useState(1);
 
   const fetchData = async () => {
