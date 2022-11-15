@@ -58,9 +58,13 @@ function App() {
         <Route
           path="/offer/pay"
           element={
-            <Elements stripe={stripePromise}>
-              <OfferPay />
-            </Elements>
+            token ? (
+              <Elements stripe={stripePromise}>
+                <OfferPay />
+              </Elements>
+            ) : (
+              <Signup />
+            )
           }
         />
         <Route path="/signup" element={<Signup />} />

@@ -3,7 +3,6 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useLocation } from "react-router-dom";
 
 import axios from "axios";
-import { logDOM } from "@testing-library/react";
 
 const OfferPay = () => {
   const location = useLocation();
@@ -12,6 +11,7 @@ const OfferPay = () => {
   const elements = useElements();
 
   const [completed, setCompleted] = useState(false);
+  const { title, price, description, image } = location.state;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,33 +25,53 @@ const OfferPay = () => {
     });
     console.log(stripeResponse);
     const stripeToken = stripeResponse.token.id;
-    const { id, price, description } = location.state;
     // Une fois le token reçu depuis l'API Stripe
     // Requête vers notre serveur
     // On envoie le token reçu depuis l'API Stripe
-    const response = await axios.post("http://localhost:4000/offer/pay", {
-      stripeToken,
-      price,
-      description,
-    });
+    const response = await axios.post(
+      "https://site--backend-vinted--6qn7tv96v7tt.code.run/offer/pay",
+      {
+        stripeToken,
+        price,
+        description,
+      }
+    );
     console.log(response.data);
     // Si la réponse du serveur est favorable, la transaction a eu lieu
     if (response.data.status === "succeeded") {
       setCompleted(true);
     }
   };
-
   return (
-    <>
-      {!completed ? (
-        <form onSubmit={handleSubmit}>
-          <CardElement />
-          <button type="submit">Valider</button>
-        </form>
-      ) : (
-        <span>Paiement effectué ! </span>
-      )}
-    </>
+    <div className="master-3">
+      <div className="payment">
+        <div className="payment-form">
+          <div className="listing-props">
+            <div className="detail-elem-2">
+              <div className="elem-id">PRODUIT</div> <div>{title}</div>
+            </div>
+            <div className="detail-elem-2">
+              <div className="elem-id">PRIX</div> <div>{price} €</div>
+            </div>
+            <div className="img-pay">
+              <img src={image} alt="offer" width="280px" />
+            </div>
+          </div>
+          {!completed ? (
+            <form onSubmit={handleSubmit}>
+              <CardElement />
+              <div className="button-pay-style">
+                <button className="button-pay" type="submit">
+                  Valider
+                </button>
+              </div>
+            </form>
+          ) : (
+            <span>Paiement effectué ! </span>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 

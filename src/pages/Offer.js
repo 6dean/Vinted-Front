@@ -89,11 +89,15 @@ const Offer = () => {
             <Link
               to="/offer/pay"
               state={{
+                title: data.product_name,
                 price: data.product_price,
                 description: data.product_description,
+                image: data.product_image["secure_url"],
               }}
             >
-              <button>ACHETER</button>
+              <div>
+                <button>ACHETER</button>
+              </div>
             </Link>
           </div>
         </div>
