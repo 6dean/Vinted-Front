@@ -92,7 +92,6 @@ const Offer = () => {
                 title: data.product_name,
                 price: data.product_price,
                 description: data.product_description,
-                id: data._id,
               }}
             >
               <button>ACHETER</button>

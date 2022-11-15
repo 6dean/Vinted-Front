@@ -6,7 +6,7 @@ import axios from "axios";
 
 const OfferPay = () => {
   const location = useLocation();
-  const { title, price, description, id } = location.state;
+  const { title, price, description } = location.state;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -35,7 +35,6 @@ const OfferPay = () => {
         title,
         price,
         description,
-        id,
       }
     );
     console.log(response.data);
