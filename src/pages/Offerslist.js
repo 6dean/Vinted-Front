@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+/// ----------- FUNCTIONS & USETATES ----------- ///
+
 const Offerslist = ({ product, setProduct }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +34,8 @@ const Offerslist = ({ product, setProduct }) => {
       <div className="loading-text">LOADING ...</div>
     </div>
   ) : (
+    /// ----------- EASTER EGG - FAKE BANNER ADVERTISE ----------- ///
+
     <>
       <div className="banner-banner">
         <a href="https://www.lereacteur.io/">
@@ -41,6 +45,8 @@ const Offerslist = ({ product, setProduct }) => {
           />
         </a>
       </div>
+
+      {/* /// ----------- FILTERS BUTTONS ----------- ///  */}
 
       <div className="nav-bar-offers">
         <button
@@ -81,6 +87,9 @@ const Offerslist = ({ product, setProduct }) => {
           value={product}
         ></input>
       </div>
+
+      {/* /// ----------- OFFER ELEMENT STYLE ----------- ///  */}
+
       <div className="introduction">
         {data.map((elem, index) => {
           return (
@@ -128,6 +137,9 @@ const Offerslist = ({ product, setProduct }) => {
           );
         })}
       </div>
+
+      {/* /// ----------- PAGE SELECTION ----------- ///  */}
+
       <div className="page-selector">
         <div>
           {page === 1 ? null : (

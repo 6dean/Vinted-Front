@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
+/// ----------- FUNCTION & USESTATES ----------- ///
+
 const Offer = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
@@ -24,6 +26,8 @@ const Offer = () => {
       <p className="loading-text">LOADING ...</p>
     </div>
   ) : (
+    /// ----------- OFFER STYLE DISPLAY ----------- ///
+
     <div className="master">
       <div className="offers-list-2">
         <div className="populaire"></div>

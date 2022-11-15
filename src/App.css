@@ -708,10 +708,14 @@ h2 {
   border: 1px solid rgb(225, 225, 225);
 }
 
-.upload-offer-button {
+.dropbox {
   border: 2px solid #007782;
   border-style: dashed solid;
-  padding: 60px;
-  padding-left: 460px;
-  padding-right: 460px;
+  max-height: 70px;
+  padding: 40px;
+  padding-left: 500px;
+  padding-right: 500px;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
 }

@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+/// ----------- FUNCTION & USETATES ----------- ///
+
 const Signup = () => {
-  // MES USESTATE
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,6 +19,8 @@ const Signup = () => {
   const reDirection = () => {
     navigate("/");
   };
+
+  /// ----------- FORM SIGN ----------- ///
 
   return (
     <div className="formulaire">
@@ -121,6 +124,9 @@ const Signup = () => {
                     };
                     data();
                   }
+
+                  /// ----------- SETIMEOUT FUNCTION ----------- ///
+
                   setTimeout(() => reDirection, "2000");
                 }}
               >

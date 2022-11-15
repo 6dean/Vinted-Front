@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import axios from "axios";
+import Dropzone from "react-dropzone";
+
+/// ----------- FUNCTION & USETATES ----------- ///
 
 const Publish = ({ token }) => {
   const [image, setImage] = useState();
@@ -14,6 +17,47 @@ const Publish = ({ token }) => {
   const [price, setPrice] = useState("");
   const navigate = useNavigate();
 
+  /// ----------- DROPBOX FUNCTION ----------- ///
+
+  class Basic extends Component {
+    constructor() {
+      super();
+      this.onDrop = (files) => {
+        setImage(files[0]);
+        this.setState({ files });
+      };
+      this.state = {
+        files: [],
+      };
+    }
+
+    render() {
+      const files = this.state.files.map((file) => (
+        <li key={file.name}>
+          {file.name} - {file.size} bytes
+        </li>
+      ));
+
+      return (
+        <Dropzone onDrop={this.onDrop}>
+          {({ getRootProps, getInputProps }) => (
+            <section>
+              <div {...getRootProps({ className: "dropzone" })}>
+                <input {...getInputProps()} />
+                <button>Déposez vos images</button>
+              </div>
+              <aside>
+                <ul>{files}</ul>
+              </aside>
+            </section>
+          )}
+        </Dropzone>
+      );
+    }
+  }
+
+  /// ----------- CONDITIONNAL RENDERING IF ----------- ///
+
   if (token) {
     return (
       <div className="master-2">
@@ -21,16 +65,8 @@ const Publish = ({ token }) => {
           <h2>Vends ton article</h2>
           <div>
             <div className="block-publish-2">
-              <div>
-                <input
-                  className="upload-offer-button"
-                  type="file"
-                  onChange={(event) => setImage(event.target.files[0])}
-                  files={image}
-                  id="avatar"
-                  name="avatar"
-                  accept="image/png, image/jpeg"
-                ></input>
+              <div className="dropbox">
+                <Basic />;
               </div>
             </div>
             <div className="block-publish">
@@ -186,7 +222,10 @@ const Publish = ({ token }) => {
         </div>
       </div>
     );
-  } else {
+  }
+
+  /// ----------- CONDITIONNAL RENDERING ELSE ----------- ///
+  else {
     navigate("/signup");
   }
 };
