@@ -11,7 +11,9 @@ const OfferPay = ({ token }) => {
   const elements = useElements();
 
   const [completed, setCompleted] = useState(false);
-  const { title, price, description, image } = location.state;
+  const { id, title, price, description, image } = location.state;
+
+  console.log(id);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,6 +34,7 @@ const OfferPay = ({ token }) => {
       "https://site--backend-vinted--6qn7tv96v7tt.code.run/offer/pay",
       {
         stripeToken,
+        id,
         price,
         description,
       }
