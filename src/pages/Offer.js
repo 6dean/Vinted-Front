@@ -86,7 +86,9 @@ const Offer = () => {
             {data.owner === undefined ? null : data.owner["account"].username}
           </div>
           <div className="buy-button">
-            <button>ACHETER</button>
+            <Link to="/offer/pay">
+              <button>ACHETER</button>
+            </Link>
           </div>
         </div>
       </div>
