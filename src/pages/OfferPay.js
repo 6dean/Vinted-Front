@@ -3,10 +3,10 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useLocation } from "react-router-dom";
 
 import axios from "axios";
+import { logDOM } from "@testing-library/react";
 
 const OfferPay = () => {
   const location = useLocation();
-  const { title, price, description } = location.state;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -25,18 +25,15 @@ const OfferPay = () => {
     });
     console.log(stripeResponse);
     const stripeToken = stripeResponse.token.id;
+    const { id, price, description } = location.state;
     // Une fois le token reçu depuis l'API Stripe
     // Requête vers notre serveur
     // On envoie le token reçu depuis l'API Stripe
-    const response = await axios.post(
-      "https://site--backend-vinted--6qn7tv96v7tt.code.run/offer/pay",
-      {
-        stripeToken,
-        title,
-        price,
-        description,
-      }
-    );
+    const response = await axios.post("http://localhost:4000/offer/pay", {
+      stripeToken,
+      price,
+      description,
+    });
     console.log(response.data);
     // Si la réponse du serveur est favorable, la transaction a eu lieu
     if (response.data.status === "succeeded") {
