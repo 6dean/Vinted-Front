@@ -24,9 +24,12 @@ const OfferPay = () => {
     // Une fois le token reçu depuis l'API Stripe
     // Requête vers notre serveur
     // On envoie le token reçu depuis l'API Stripe
-    const response = await axios.post("/offer/pay", {
-      stripeToken,
-    });
+    const response = await axios.post(
+      "site--backend-vinted--6qn7tv96v7tt.code.run/offer/pay",
+      {
+        stripeToken,
+      }
+    );
     console.log(response.data);
     // Si la réponse du serveur est favorable, la transaction a eu lieu
     if (response.data.status === "succeeded") {
