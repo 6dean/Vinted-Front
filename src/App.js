@@ -60,7 +60,7 @@ function App() {
           element={
             token ? (
               <Elements stripe={stripePromise}>
-                <OfferPay />
+                <OfferPay token={token} />
               </Elements>
             ) : (
               <Signup />

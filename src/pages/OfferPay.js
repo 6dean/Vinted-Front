@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 import axios from "axios";
 
-const OfferPay = () => {
+const OfferPay = ({ token }) => {
   const location = useLocation();
 
   const stripe = useStripe();
@@ -21,7 +21,7 @@ const OfferPay = () => {
     // Demande de création d'un token via l'API Stripe
     // On envoie les données bancaires dans la requête
     const stripeResponse = await stripe.createToken(cardElement, {
-      name: "L'id de l'acheteur",
+      name: token,
     });
     console.log(stripeResponse);
     const stripeToken = stripeResponse.token.id;
