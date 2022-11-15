@@ -41,6 +41,13 @@ const Home = ({ product }) => {
           src="https://static.vinted.com/assets/seller-promotion/gender_test/a/banner-wide-7403f719caac875cfeea61593da7fc7e7320c126193b4ff654e4397f54d430ae.jpg"
           alt=""
         />
+        <div className="scratch-effect">
+          <img
+            className="torn"
+            src="https://static.vinted.com/assets/hero-block/tear-d431548c90905ad757632e4c3075d9473e38c7c6642721efeae9413afb9387a2.svg"
+            alt="torn"
+          />
+        </div>
       </div>
       <div className="offers-list">
         <div className="populaire">ARTICLES POPULAIRE</div>
