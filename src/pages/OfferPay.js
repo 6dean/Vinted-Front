@@ -60,9 +60,20 @@ const OfferPay = ({ token }) => {
               <img src={image} alt="offer" width="280px" />
             </div>
           </div>
+          <div className="sure">
+            <div className="sure-spacing<">
+              <div className="total">Montant à payer</div>
+              <div></div>
+              <div className="somme"> {price} € </div>
+            </div>
+
+            <p>Frais de port offert par le Reacteur</p>
+          </div>
+
           {!completed ? (
             <form onSubmit={handleSubmit}>
               <CardElement />
+
               <div className="button-pay-style">
                 <button className="button-pay" type="submit">
                   Valider
