@@ -67,7 +67,7 @@ const Publish = ({ token }) => {
           <div>
             <div className="block-publish-2">
               <div className="dropbox">
-                <Basic />;
+                <Basic />
               </div>
             </div>
             <div className="block-publish">
