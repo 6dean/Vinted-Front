@@ -5,6 +5,8 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 /// MES PAGES
 import Home from "./pages/Home";
@@ -13,6 +15,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Offerslist from "./pages/Offerslist";
 import Publish from "./pages/Publish";
+import OfferPay from "./pages/OfferPay";
 
 // MES COMPONENTS
 import Header from "./components/Header";
@@ -20,6 +23,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 function App() {
+  const stripePromise = loadStripe(
+    "pk_test_51M4MDxA8Ul5iUrmk1XQfbXmRypvDS8nbtKRULjHO4jCBWHUIKMZoElkbUUbGdQlQdBbDfyTw3vzzR8R4LNFxYRSV00VcdfdYbN"
+  );
+
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [product, setProduct] = useState("");
 
@@ -48,6 +55,14 @@ function App() {
           element={<Home product={product} setProduct={setProduct} />}
         />
         <Route path="/offer/:id" element={<Offer />} />
+        <Route
+          path="/offer/pay"
+          element={
+            <Elements stripe={stripePromise}>
+              <OfferPay />
+            </Elements>
+          }
+        />
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/Offers"

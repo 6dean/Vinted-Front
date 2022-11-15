@@ -33,9 +33,9 @@ const Publish = ({ token }) => {
 
     render() {
       const files = this.state.files.map((file) => (
-        <li key={file.name}>
+        <p>
           {file.name} - {file.size} bytes
-        </li>
+        </p>
       ));
 
       return (
@@ -47,6 +47,7 @@ const Publish = ({ token }) => {
                 <button>Déposez vos images</button>
               </div>
               <aside>
+                <p>{image && image.name} </p>
                 <ul>{files}</ul>
               </aside>
             </section>
