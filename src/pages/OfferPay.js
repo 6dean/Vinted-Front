@@ -57,7 +57,7 @@ const OfferPay = ({ token }) => {
               <div className="elem-id">PRIX</div> <div>{price} €</div>
             </div>
             <div className="img-pay">
-              <img src={image} alt="offer" width="280px" />
+              <img src={image} alt="offer" width="200px" />
             </div>
           </div>
           <div className="sure">

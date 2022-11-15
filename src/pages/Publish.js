@@ -179,7 +179,7 @@ const Publish = ({ token }) => {
               <div>
                 <button
                   onClick={() => {
-                    if (title === "" || description === "") {
+                    if (title === "" || description === "" || price === "") {
                       alert(`Vos informations produit ne sont pas complètes`);
                     } else {
                       const data = async () => {

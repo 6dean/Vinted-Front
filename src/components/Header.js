@@ -34,7 +34,7 @@ const Header = ({ token, transferToken, product, setProduct }) => {
                 transferToken(null);
               }}
             >
-              deconnecter
+              Déconnecter
             </div>
           )}
           <Link to="/Publish">
