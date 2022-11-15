@@ -25,7 +25,7 @@ const OfferPay = () => {
     // Requête vers notre serveur
     // On envoie le token reçu depuis l'API Stripe
     const response = await axios.post(
-      "https://site--backend-vinted--6qn7tv96v7tt.code.run/",
+      "https://site--backend-vinted--6qn7tv96v7tt.code.run/offer/pay",
       {
         stripeToken,
       }
