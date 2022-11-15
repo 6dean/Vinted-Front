@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { useLocation } from "react-router-dom";
 
 import axios from "axios";
 
 const OfferPay = () => {
+  const location = useLocation();
+  const { title, price, description, id } = location.state;
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -28,6 +32,10 @@ const OfferPay = () => {
       "https://site--backend-vinted--6qn7tv96v7tt.code.run/offer/pay",
       {
         stripeToken,
+        title,
+        price,
+        description,
+        id,
       }
     );
     console.log(response.data);
