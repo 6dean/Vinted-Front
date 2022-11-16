@@ -13,8 +13,6 @@ const OfferPay = ({ token }) => {
   const [completed, setCompleted] = useState(false);
   const { id, title, price, description, image } = location.state;
 
-  console.log(id);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     // On récupère ici les données bancaires que l'utilisateur rentre

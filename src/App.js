@@ -78,7 +78,7 @@ function App() {
         />
         <Route
           path="/login"
-          element={<Login transferToken={transferToken} />}
+          element={<Login transferToken={transferToken} token={token}/>}
         />
       </Routes>
       <Footer />

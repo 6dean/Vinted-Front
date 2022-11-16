@@ -99,7 +99,7 @@ const Signup = () => {
               <button
                 className="button-join"
                 onClick={() => {
-                  if (username === "" || email === "") {
+                  if (username === "" || email === "" || password === "") {
                     alert(`Vos informations ne sont pas complètes`);
                   } else {
                     const data = async () => {
