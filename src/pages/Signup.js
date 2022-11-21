@@ -1,7 +1,6 @@
 /* eslint-disable no-sequences */
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -99,7 +98,7 @@ const Signup = () => {
               <button
                 className="button-join"
                 onClick={() => {
-                  if (username === "" || email === "" || password === "") {
+                  if (!username || !email || !password) {
                     alert(`Vos informations ne sont pas complètes`);
                   } else {
                     const data = async () => {

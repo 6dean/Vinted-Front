@@ -104,7 +104,7 @@ const Offerslist = ({ product, setProduct }) => {
                           ? elem.owner.avatar.secure_url
                           : "https://res.cloudinary.com/dlfp2xvis/image/upload/v1668451320/my-content/photo-avatar-profil_tkttgw.png"
                       }
-                      alt=""
+                      alt="product"
                     />
                     {elem.owner === undefined
                       ? "Team Reacteur"
@@ -119,7 +119,7 @@ const Offerslist = ({ product, setProduct }) => {
                             ? elem.product_image.secure_url
                             : null
                         }
-                        alt=""
+                        alt="product"
                       />
                     </div>
                   </Link>

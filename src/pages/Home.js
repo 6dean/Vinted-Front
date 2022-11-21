@@ -6,18 +6,16 @@ const Home = ({ product }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = async () => {
-    const response = await axios.get(
-      `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers/?title=${product}`
-    );
-    setData(response.data);
-
-    setIsLoading(false);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        `https://site--backend-vinted--6qn7tv96v7tt.code.run/offers/?title=${product}`
+      );
+      setData(response.data);
+
+      setIsLoading(false);
+    };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product]);
 
   return isLoading ? (
