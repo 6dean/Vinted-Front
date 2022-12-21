@@ -1,3 +1,6 @@
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vinted_logo.png/1200px-Vinted_logo.png" alt="Vinted" width=230 />
+
+
 # Vinted frontend
 
 It is the frontend of my Vinted replica made with Node.js from my first FullStack Project.
