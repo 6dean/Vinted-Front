@@ -548,6 +548,7 @@ h1 {
 }
 
 .offers-list {
+  position: relative;
   margin-top: 12px;
   margin-right: auto;
   margin-left: auto;
