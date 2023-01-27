@@ -162,6 +162,7 @@ header {
 
 .img-advertise {
   height: 560px;
+  position: relative;
 }
 
 .scratch-effect {

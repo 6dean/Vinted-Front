@@ -26,19 +26,19 @@ const Home = ({ product }) => {
     </div>
   ) : (
     <>
-      <div className="box-advertise">
-        <div className="style-advertise">
-          Prêts à faire du tri dans vos placards ?
-        </div>
-        <Link to="/Publish">
-          <button className="advertise-button">Vends maintenant</button>
-        </Link>
-      </div>
       <div className="img-advertise">
         <img
           src="https://static.vinted.com/assets/seller-promotion/gender_test/a/banner-wide-7403f719caac875cfeea61593da7fc7e7320c126193b4ff654e4397f54d430ae.jpg"
           alt=""
         />
+        <div className="box-advertise">
+          <div className="style-advertise">
+            Prêts à faire du tri dans vos placards ?
+          </div>
+          <Link to="/Publish">
+            <button className="advertise-button">Vends maintenant</button>
+          </Link>
+        </div>
         <div className="scratch-effect">
           <img
             className="torn"
