@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Home = ({ product }) => {
+const Home = ({ product, DemoLog, token }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -32,12 +32,16 @@ const Home = ({ product }) => {
           alt=""
         />
         <div className="box-advertise">
-          <div className="style-advertise">
-            Prêts à faire du tri dans vos placards ?
-          </div>
-          <Link to="/Publish">
-            <button className="advertise-button">Vends maintenant</button>
-          </Link>
+          <div className="style-advertise">Envie de tester ma réplique ?</div>
+          {token ? (
+            <Link to="/publish">
+              <button className="advertise-button">À VOUS DE JOUER !</button>
+            </Link>
+          ) : (
+            <button className="advertise-button" onClick={() => DemoLog()}>
+              C'EST PARTI !{" "}
+            </button>
+          )}
         </div>
         <div className="scratch-effect">
           <img

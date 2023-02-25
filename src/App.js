@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import axios from "axios";
 
 /// MES PAGES
 import Home from "./pages/Home";
@@ -35,8 +36,24 @@ function App() {
       setToken(token);
       Cookies.set("token", token, { expires: 1 });
     } else {
-      setToken(null);
       Cookies.remove("token");
+      setToken(null);
+    }
+  };
+
+  const DemoLog = async () => {
+    try {
+      const response = await axios.post(
+        "https://site--backend-vinted--6qn7tv96v7tt.code.run/user/login",
+        {
+          email: "demouser@demo",
+          password: "password",
+        }
+      );
+      const token = response.data.token;
+      transferToken(token);
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -47,12 +64,20 @@ function App() {
         transferToken={transferToken}
         product={product}
         setProduct={setProduct}
+        setToken={setToken}
       />
       <Navbar />
       <Routes>
         <Route
           path="/"
-          element={<Home product={product} setProduct={setProduct} />}
+          element={
+            <Home
+              product={product}
+              setProduct={setProduct}
+              DemoLog={DemoLog}
+              token={token}
+            />
+          }
         />
         <Route path="/offer/:id" element={<Offer />} />
         <Route
@@ -78,7 +103,7 @@ function App() {
         />
         <Route
           path="/login"
-          element={<Login transferToken={transferToken} token={token}/>}
+          element={<Login transferToken={transferToken} token={token} />}
         />
       </Routes>
       <Footer />
